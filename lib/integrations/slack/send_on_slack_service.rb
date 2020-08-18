@@ -39,7 +39,7 @@ class Integrations::Slack::SendOnSlackService < Base::SendOnChannelService
 
     @slack_message = slack_client.chat_postMessage(
       channel: hook.reference_id,
-      text: message_content,
+      text: "Log in to <#{ENV['FRONTEND_URL']}|Chatwoot> to view this message",
       username: "#{sender_type}: #{sender.try(:name)}",
       thread_ts: conversation.identifier,
       icon_url: avatar_url(sender)
